@@ -1,3 +1,10 @@
 <h1>Home</h1>
 
 <p>Field to upload new images</p>
+
+<%= form_for(@image) do |f| %>
+  <div>
+    <%= f.text_field :description, placeholder:  "Test img creation" %>
+  </div>
+  <%= f.submit "Upload" %>
+<% end %>
