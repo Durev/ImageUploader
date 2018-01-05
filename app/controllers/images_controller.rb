@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
       redirect_to display_path
       # add flash success
     else
-      render 'root'
+      render 'upload'
       # flash error
     end
   end

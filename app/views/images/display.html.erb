@@ -3,3 +3,12 @@
 <hr>
 <p>Display of a random image</p>
 <p>Changes every 7 second</p>
+
+<% unless @images.empty? %>
+  <% @images.each do |image| %>
+    <div>
+      <%= image_tag image.name.url if image.name? %>
+      <h4><%= image.description if image.description? %></h4>
+    </div>
+  <% end %>
+<% end %>
