@@ -3,18 +3,26 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
 
-  def display
+  def index
     @images = Image.all
+    @random_image = Image.limit(1).order("RANDOM()").first
+
+    # Get correct server url, regardless of the environment
+    @req_url = request.base_url + "/random"
+  end
+
+  def random
+    @random_image = Image.limit(1).order("RANDOM()").first
+    render json: { status: 200,
+                   data: @random_image }
   end
 
   def create
     @image = Image.new(image_params)
     if @image.save
-      redirect_to display_path
-      # add flash success
+      redirect_to images_path
     else
       render 'upload'
-      # flash error
     end
   end
 

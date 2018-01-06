@@ -1,0 +1,50 @@
+<h1>Display</h1>
+<p>Count of images uploaded : <%= @images.count %></p>
+<hr>
+
+<% unless @images.empty? %>
+  <div>
+  </div>
+  <%= image_tag(@random_image.name.url, id: "random-image") if @random_image.name? %>
+  <h4 id="image-description"><%= @random_image.description if @random_image.description? %></h4>
+
+<% end %>
+
+<script>
+  var imgElt = document.getElementById("random-image");
+  var descriptionElt = document.getElementById("image-description");
+  var serverUrl = "<%= @req_url %>";
+
+  function ajaxGet(url, callback) {
+    var req = new XMLHttpRequest();
+    req.open("GET", url);
+    // In case there was an answer from the server
+    req.addEventListener("load", function() {
+      if (req.status >= 200 && req.status < 400) {
+        callback(req.responseText);
+      } else {
+        console.error(req.status + " " + req.statusText + " " + url)
+      }
+    });
+    // If the server didn't process the request
+    req.addEventListener("error", function() {
+      console.error("Network error with this URL : " + url)
+    });
+    // Send request
+    req.send(null);
+  }
+
+  function changePicture(reqResponse) {
+    var responseJson = JSON.parse(reqResponse);
+    var newPicture = responseJson.data.name.url;
+    var newDescription = responseJson.data.description;
+    imgElt.setAttribute("src", newPicture);
+    descriptionElt.innerHTML = newDescription;
+  }
+
+  function sendRequest() {
+    ajaxGet(serverUrl, changePicture);
+  }
+
+  window.setInterval(sendRequest, 7000);
+</script>
