@@ -20,6 +20,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save
+      flash[:success] = "Your picture was successfully uploaded !"
       redirect_to images_path
     else
       render 'upload'
