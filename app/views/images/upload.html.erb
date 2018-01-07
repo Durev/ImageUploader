@@ -1,18 +1,31 @@
-<h1>Home</h1>
+<div class="row" id="background-title">
+  <h1 class="text-center">Home</h1>
+  <h5 class="text-center">Upload any picture from your computer</h5>
+</div><!-- /row -->
 
-<%= form_for(@image) do |f| %>
+<div class="row upload">
+  <div class="col-md-6 main-home">
+    <%= form_for(@image) do |f| %>
 
-  <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages' %>
 
-  <div>
-    <%= f.text_field :description, placeholder:  "Test img creation" %>
+      <div class="form-group">
+        <%= f.label "Picture" %>
+        <%= f.file_field :name, accept: 'image/jpeg,image/png', class: "" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, placeholder:  "You can provide a short description for your picture", class: "form-control" %>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+          Your description should not be more than 300 characters long.
+        </small>
+      </div>
+        <%= f.submit "Upload", class: "btn btn-success" %>
+
+    <% end %>
   </div>
-  <div>
-    <%= f.file_field :name, accept: 'image/jpeg,image/png' %>
-  </div>
-
-  <%= f.submit "Upload" %>
-<% end %>
+</div><!-- /row -->
 
 <script type="text/javascript">
   $('#image_name').bind('change', function() {

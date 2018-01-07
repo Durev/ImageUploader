@@ -1,0 +1,83 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* Universal */
+body {
+  background-color: #ecf0f1;
+}
+
+html {
+  width: 100%;
+}
+
+#logo {
+  width: 45px;
+  height: 45px;;
+}
+
+.header {
+  padding: 8px;
+}
+
+
+@media (max-width: $screen-sm-min) {
+  li {
+    text-align: center;
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+/* Home page */
+.main-home {
+  float: none;
+  margin: 50px auto;
+}
+
+.upload {
+  text-align: center;
+}
+
+input[type=file] {
+  margin: 0 auto;
+}
+
+input[type=text] {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#background-title {
+  padding: 120px 0;
+  color: white;
+  background-image: linear-gradient(rgba(1, 50, 67, 0.3), rgba(1, 50, 67, 0.6)),
+                  url("https://picsum.photos/1600/800?image=961");
+  background-size: cover;
+}
+
+/* Images page */
+.main-images {
+  float: none;
+  margin: 20px auto;
+}
+
+#random-image {
+  max-width: 80vw;
+  min-width: 300px;
+  max-height: 600px;
+}
+
+#countdown-container {
+  background-color: #F0582F;
+  color: white;
+  margin: auto;
+  width: 300px;
+  padding: 6px;
+  border-radius: 15px;
+}
+
+#image-description {
+  font-style: italic;
+}

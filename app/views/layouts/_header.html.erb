@@ -1,0 +1,11 @@
+<header class="navbar navbar-static-top navbar-inverse">
+  <div class="container header">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= image_tag 'logo.png', id: "logo" %></li>
+        <li><%= link_to "Home", root_path, data: { turbolinks: false } %></li>
+        <li><%= link_to "Images", images_path, data: { turbolinks: false } %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

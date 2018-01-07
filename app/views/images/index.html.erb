@@ -1,18 +1,24 @@
-<h1>Display</h1>
-<p>Count of images uploaded : <%= @images.count %></p>
-<hr>
-
-<% unless @images.empty? %>
-  <div>
+<div class="row text-center">
+  <h2>Images</h2>
+  <h5>Number of pictures uploaded : <%= @images.count %></h5>
+  <div id="countdown-container">
+    <h4> New random image in <span id="countdown">7 </span> seconds</h4>
   </div>
-  <%= image_tag(@random_image.name.url, id: "random-image") if @random_image.name? %>
-  <h4 id="image-description"><%= @random_image.description if @random_image.description? %></h4>
+</div><!-- /row -->
 
-<% end %>
+<div class="row text-center">
+  <div class="col-md-6 main-images">
+    <% unless @images.empty? %>
+      <%= image_tag(@random_image.name.url, id: "random-image") %>
+      <p id="image-description"><%= @random_image.description if @random_image.description? %></p>
+    <% end %>
+  </div>
+</div><!-- /row -->
 
 <script>
   var imgElt = document.getElementById("random-image");
   var descriptionElt = document.getElementById("image-description");
+  var timeLeft = 7;
   var serverUrl = "<%= @req_url %>";
 
   function ajaxGet(url, callback) {
@@ -39,12 +45,19 @@
     var newPicture = responseJson.data.name.url;
     var newDescription = responseJson.data.description;
     imgElt.setAttribute("src", newPicture);
-    descriptionElt.innerHTML = newDescription;
+    descriptionElt.textContent = newDescription;
+    timeLeft = 7;
   }
 
   function sendRequest() {
     ajaxGet(serverUrl, changePicture);
   }
 
+  function updateTimer() {
+    timeLeft --;
+    document.getElementById("countdown").textContent = timeLeft;
+  }
+
+  window.setInterval(updateTimer, 1000);
   window.setInterval(sendRequest, 7000);
 </script>
