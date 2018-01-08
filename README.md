@@ -17,12 +17,11 @@ If you already have a version of ImageMagick installed, jump to the next step to
 
 If it isn't installed :
 - You can use Homebrew on a Mac :
-Install it with Homebrew :
 ```
 brew install imagemagick
 ```
 - Otherwise, on any OS, follow this link :
-[https://www.imagemagick.org/script/install-source.php]
+https://www.imagemagick.org/script/install-source.php
 
 
 ### Run the app on your computer
