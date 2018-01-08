@@ -11,7 +11,7 @@
 
       <div class="form-group">
         <%= f.label "Picture" %>
-        <%= f.file_field :name, accept: 'image/jpeg,image/png', class: "" %>
+        <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: "" %>
       </div>
 
       <div class="form-group">
@@ -26,12 +26,3 @@
     <% end %>
   </div>
 </div><!-- /row -->
-
-<script type="text/javascript">
-  $('#image_name').bind('change', function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 2) {
-      alert('Maximum file size is 2MB. Please choose a smaller file.');
-    }
-  });
-</script>

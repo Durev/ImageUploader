@@ -9,7 +9,7 @@
 <div class="row text-center">
   <div class="col-md-6 main-images">
     <% unless @images.empty? %>
-      <%= image_tag(@random_image.name.url, id: "random-image") %>
+      <%= image_tag(@random_image.picture.url, id: "random-image") %>
       <p id="image-description"><%= @random_image.description if @random_image.description? %></p>
     <% end %>
   </div>
@@ -42,7 +42,7 @@
 
   function changePicture(reqResponse) {
     var responseJson = JSON.parse(reqResponse);
-    var newPicture = responseJson.data.name.url;
+    var newPicture = responseJson.data.picture.url;
     var newDescription = responseJson.data.description;
     imgElt.setAttribute("src", newPicture);
     descriptionElt.textContent = newDescription;
